@@ -2,9 +2,22 @@
   text-align: center;
 }
 
+#logoButton, #btn {
+  background-color: gray;
+  border: none;
+  color: #61DAFB;
+  padding: 10px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  z-index: 2;
+}
+
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: 400px;
+  height: 200px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,10 +35,18 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.wrapper {
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  margin: 5px;
+  padding: 5px;
 }
 
 @keyframes App-logo-spin {
