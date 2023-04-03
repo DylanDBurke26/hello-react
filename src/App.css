@@ -49,6 +49,16 @@
   padding: 5px;
 }
 
+.bookTable {
+  margin-top: 50px;
+
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+
+  
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

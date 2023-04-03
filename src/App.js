@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { supabase } from './supabaseClient';
 import logo from './logo.svg';
 import './App.css';
 
@@ -77,6 +79,54 @@ function Count() {
   );
 }
 
+function MagicButton() {
+  const [count, setCount] = useState(0);
+  
+  function doMagic() {
+    setCount(count + 1);
+  }
+  
+  return (
+    <>
+      <h3>This is a MagicButton</h3>
+      <button onClick={doMagic}>Magic {count} </button>
+
+    </>
+  );
+}
+
+// A React component that queries and displays data from Supabase
+function Library() {
+  // The useState hook lets us store data in a component across renders
+  // setMyBooks is a setter function that updates the state of myBooks
+  const [myBooks, setMyBooks] = useState([]);
+  // This should look familar from Codepen
+  async function getBooks() {
+    let { data: books, error } = await supabase
+      .from('Books')
+      .select('*')
+    // Update the state
+    setMyBooks(books);
+  }
+  // Execute the function
+  getBooks();
+  // Below is what displays when you use <Library />
+  return (
+    <table className='bookTable'>
+    {
+      myBooks.map(b => (
+        <tr className='tableRow'>
+          <td>{b.title}</td>
+          <td>{b.author}</td>
+          <td>{b.isbn}</td>
+          <td>{b.description}</td>
+        </tr>
+      ))
+    }
+    </table>
+  )
+}
+
 function App() {
   return (
     <div className="App">
@@ -84,6 +134,7 @@ function App() {
         <Hands/>
         <LogoButton/>
         <Count/>
+        <Library/>
       </header>
     </div>
   );
