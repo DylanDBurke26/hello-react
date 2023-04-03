@@ -79,22 +79,6 @@ function Count() {
   );
 }
 
-function MagicButton() {
-  const [count, setCount] = useState(0);
-  
-  function doMagic() {
-    setCount(count + 1);
-  }
-  
-  return (
-    <>
-      <h3>This is a MagicButton</h3>
-      <button onClick={doMagic}>Magic {count} </button>
-
-    </>
-  );
-}
-
 // A React component that queries and displays data from Supabase
 function Library() {
   // The useState hook lets us store data in a component across renders
@@ -107,6 +91,7 @@ function Library() {
       .select('*')
     // Update the state
     setMyBooks(books);
+    console.log(error);
   }
   // Execute the function
   getBooks();
