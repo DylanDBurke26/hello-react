@@ -92,7 +92,6 @@ function Library() {
         .select('*')
       // Update the state
       setMyBooks(books);
-    // console.log(error);
     }
     
   }
