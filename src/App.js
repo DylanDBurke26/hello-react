@@ -86,30 +86,40 @@ function Library() {
   const [myBooks, setMyBooks] = useState([]);
   // This should look familar from Codepen
   async function getBooks() {
-    let { data: books, error } = await supabase
-      .from('Books')
-      .select('*')
-    // Update the state
-    setMyBooks(books);
-    console.log(error);
+    if (myBooks.length === 0) {
+        let { data: books, error } = await supabase
+        .from('Books')
+        .select('*')
+      // Update the state
+      setMyBooks(books);
+    // console.log(error);
+    }
+    
   }
   // Execute the function
   getBooks();
   // Below is what displays when you use <Library />
   return (
-    <table className='bookTable'>
-    {
-      myBooks.map(b => (
-        <tr className='tableRow'>
-          <td>{b.title}</td>
-          <td>{b.author}</td>
-          <td>{b.isbn}</td>
-          <td>{b.description}</td>
-        </tr>
-      ))
-    }
-    </table>
-  )
+    <>
+      <table className='bookTable'>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Description</th>
+      {
+              myBooks.map(b => (
+              <tr className='tableRow'>
+                <td>{b.title}</td>
+                <td>{b.author}</td>
+                <td>{b.isbn}</td>
+                <td>{b.description}</td>
+              </tr>
+              ))
+      }
+      </table>    
+    </>
+
+  );
 }
 
 function App() {
